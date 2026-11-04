@@ -26,29 +26,29 @@ const Cart = () => {
       })
   }, [userId]);
 
-  const updateQuantity = async(orderId, newQty)=>{
-    if(newQty < 1) return;
+  // const updateQuantity = async(orderId, newQty)=>{
+  //   if(newQty < 1) return;
 
-    try{
-      response = await fetch('http://127.0.0.1:8000/api/cart/update_quantity/',{
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          orderId: orderId,
-          quantity: newQty
-        })
-      });
+  //   try{
+  //     response = await fetch('http://127.0.0.1:8000/api/cart/update_quantity/',{
+  //       method: 'PUT',
+  //       headers: { 'Content-Type': 'application/json'},
+  //       body: JSON.stringify({
+  //         orderId: orderId,
+  //         quantity: newQty
+  //       })
+  //     });
 
-      if(response.status === 200){
-        const updated = await fetch(`http://127.0.0.1:8000/api/cart/${userId}`);
-        const data = await updated.json();
-        setCartItems(data);
-        const total = data.reduce((sum, item) => sum + item.food.item_price * item.quantity, 0);
-        setGrandTotal(total);
-      }
+  //     if(response.status === 200){
+  //       const updated = await fetch(`http://127.0.0.1:8000/api/cart/${userId}`);
+  //       const data = await updated.json();
+  //       setCartItems(data);
+  //       const total = data.reduce((sum, item) => sum + item.food.item_price * item.quantity, 0);
+  //       setGrandTotal(total);
+  //     }
 
-    }
-  }
+  //   }
+  // }
 
   return (
     <PublicLayout>

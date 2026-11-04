@@ -155,14 +155,14 @@ def get_cart_items(request, user_id):
   serializer = CartOrderSerializer(orders,many=True)
   return Response(serializer.data)
   
-@api_view(['PUT'])
-def update_cart_quantity(request):
-  order_id = request.data.get('orderId')
-  quantity = request.data.get('quantity')
+# @api_view(['PUT'])
+# def update_cart_quantity(request):
+#   order_id = request.data.get('orderId')
+#   quantity = request.data.get('quantity')
 
-  try:
-    order = Order.objects.get(id=order_id, is_order_placed=False)
-    order.quantity = quantity
-    order.save()
+  # try:
+  #   order = Order.objects.get(id=order_id, is_order_placed=False)
+  #   order.quantity = quantity
+  #   order.save()
 
-    return Response({'message':'quantity updated successfully'},status=200)
+  #   return Response({'message':'quantity updated successfully'},status=200)
