@@ -48,7 +48,7 @@ const AdminLogin = () => {
               <label className="form-label"><FaLock className="me-1" />Password</label>
               <input type="password" value={password} className="form-control" onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password" required />
             </div>
-            <button type="submit" className="btn btn-primary w-100 mt-3"><FaSignInAlt className="me-1" />Login to this page</button>
+            <button type="submit" className="btn btn-primary w-100 mt-3"><FaSignInAlt className="me-1" />Login</button>
           </form>
         </div>
         <ToastContainer position="top-right" autoClose={2000} />
