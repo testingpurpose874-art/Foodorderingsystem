@@ -152,7 +152,6 @@ def update_cart_quantity(request):
 
 @api_view(['DELETE'])
 def delete_cart_item(request,order_id):
-  # order_id = request.data.get('order_id')
   try:
     order = Order.objects.get(id=order_id, is_order_placed=False)
     order.delete()
