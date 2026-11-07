@@ -35,7 +35,7 @@ const PublicLayout = ({ children }) => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item mx-1">
-                <Link className="nav-link" to="#"><FaHome className="me-1" />Home</Link>
+                <Link className="nav-link" to="/"><FaHome className="me-1" />Home</Link>
               </li>
               <li className="nav-item mx-1">
                 <Link className="nav-link" to="#"><FaUtensils className="me-1" />Menu</Link>
@@ -61,7 +61,7 @@ const PublicLayout = ({ children }) => {
                     <Link className="nav-link" to="#"><FaUser className="me-1" />My Orders</Link>
                   </li>
                   <li className="nav-item mx-1">
-                    <Link className="nav-link" to="#"><FaShoppingCart className="me-1" />Cart</Link>
+                    <Link className="nav-link" to="/cart"><FaShoppingCart className="me-1" />Cart</Link>
                   </li>
                   <li className="nav-item mx-1">
                     <Link className="nav-link" to="#"><FaHeart className="me-1" />Wishlist</Link>

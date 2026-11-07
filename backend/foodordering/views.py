@@ -108,9 +108,6 @@ def food_detail(request,id):
 def add_to_cart(request):
   user_id = request.data.get('userId')
   food_id = request.data.get('foodId')
-
-  # print("USER ID:", user_id)
-  # print("FOOD ID:", food_id)
   
   try:
     user = User.objects.get(id=user_id)
@@ -128,22 +125,6 @@ def add_to_cart(request):
       order.save()
 
     return Response({"message":"Food added to cart successfully"},status=200)
-  
-  # except User.DoesNotExist:
-  #       return Response({
-  #           "message": f"User with id {user_id} does not exist"
-  #       }, status=404)
-
-  # except Food.DoesNotExist:
-  #     return Response({
-  #         "message": f"Food with id {food_id} does not exist"
-  #     }, status=404)
-
-  # except Exception as e:
-  #         print("ERROR:", str(e))
-  #         return Response({
-  #             "message": str(e)
-  #         }, status=500)
 
   except:
     return Response({"message":"Something went wrong"},status=404)
@@ -154,5 +135,27 @@ def get_cart_items(request, user_id):
   orders = Order.objects.filter(user_id=user_id,is_order_placed=False).select_related('food')
   serializer = CartOrderSerializer(orders,many=True)
   return Response(serializer.data)
-  
 
+@api_view(['PUT'])
+def update_cart_quantity(request):
+  order_id = request.data.get('orderId')
+  quantity = request.data.get('quantity')
+
+  try:
+    order = Order.objects.get(id=order_id, is_order_placed=False)
+    order.quantity = quantity
+    order.save()
+
+    return Response({"message": "quantity updated successfully"},status=200)
+  except:
+    return Response({"message":"Something went wrong"},status=404)
+
+@api_view(['DELETE'])
+def delete_cart_item(request,order_id):
+  try:
+    order = Order.objects.get(id=order_id, is_order_placed=False)
+    order.delete()
+
+    return Response({"message":"Item deleted from cart"},status=200)
+  except:
+    return Response({"message":"Something went wrong"},status=404)
