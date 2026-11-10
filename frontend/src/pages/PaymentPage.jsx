@@ -88,7 +88,7 @@ const PaymentPage = () => {
               <label className='form-check-label'>Cash on Delivery</label>
             </div>
           )}
-          {/* now to start here */}
+          {/* now to start here to go */}
         </div>
       </div>
       <ToastContainer />
