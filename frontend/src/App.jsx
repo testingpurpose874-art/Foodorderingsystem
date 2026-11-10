@@ -11,6 +11,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import FoodDetail from './pages/FoodDetail';
 import Cart from './pages/Cart';
+import PaymentPage from './pages/PaymentPage';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/food/:id' element={<FoodDetail/>}></Route>
         <Route path='/cart' element={<Cart/>}></Route>
+        <Route path='/payment' element={<PaymentPage/>}></Route>
       </Routes>
     </BrowserRouter>
   );
